@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+</head>
+
+<body>
+<!-- header block -->
+<nav class="navbar">
+    <div class="container">
+
+        <form class="form-inline">
+            <input type="text" class="form-control" id="search_firstName" placeholder="Имя">
+            <input type="text" class="form-control" id="search_lastName" placeholder="Фамилия">
+            <input type="text" class="form-control" id="search_phoneNumberMobile" placeholder="Номер телефона">
+            <button type="button" id="search" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </form>
+
+
+        <ul class="nav nav-inline">
+            <li class="nav-item">
+                <button type="button" class="hide add_contact btn">Add contact</button>
+            </li>
+            <li class="nav-item"><a href="/" class="nav-link hide" id="logout">Logout</a></li>
+            <li class="nav-item"><a href="/login.html" class="nav-link show">Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="content">
+        <!--table with tasks-->
+        <div id="tasks">
+            <table class="tasks table table-striped">
+                <thead>
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Телефон(мобильный)</th>
+                    <th>Телефон(домашний)</th>
+                    <th>Aдрес</th>
+                    <th>email</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <input type="submit" value="Save" id="submit_contact_save" class="hide btn">
+</div>
+</body>
+</html>

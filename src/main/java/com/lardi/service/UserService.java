@@ -30,20 +30,17 @@ public class UserService {
     public JwtUser login(String username, String password) {
         log.info(String.format("Try to enter user with - username : %s, and password : %s", username, password));
 
-        if (userRepository.existsByUserName(username)) {
-            throw new UserAlreadyExistException("User already exist");
+        Optional<User> user = userRepository.findUserByUsername(username).filter(s -> (password).equals(s.getPassword()));
+        if (user.isPresent()) {
+            log.info("user - is present" + user.get());
+            return JwtUser.builder()
+                    .user(user.get())
+                    .token("Access allowed")
+                    .build();
         } else {
-            Optional<User> user = userRepository.findUserByUsername(username).filter(s -> (password).equals(s.getPassword()));
-            if (user.isPresent()) {
-                log.info("user - is present" + user.get());
-                return JwtUser.builder()
-                        .user(user.get())
-                        .token("Access allowed")
-                        .build();
-            } else {
-                throw new UserNotFoundException(String.format("User with login: %s, and password : %s - not found ", username, password));
-            }
+            throw new UserNotFoundException(String.format("User with login: %s, and password : %s - not found ", username, password));
         }
+
     }
 
     @Transactional(readOnly = true)
@@ -58,6 +55,10 @@ public class UserService {
 
     @Transactional
     public void create(User user) {
-        userRepository.save(user);
+        if (userRepository.existsByUserName(user.getUsername())) {
+            throw new UserAlreadyExistException("User already exist");
+        } else {
+            userRepository.save(user);
+        }
     }
 }

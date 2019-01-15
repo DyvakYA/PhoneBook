@@ -57,7 +57,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void wheneExistByUserName_thenReturnTrue() {
+    public void whenExistByUserName_thenReturnTrue() {
 
         // when
         boolean result = userRepository.existsByUserName(user.getUsername());

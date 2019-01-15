@@ -55,4 +55,14 @@ public class UserRepositoryTest {
         assertTrue("admin".equals(found.getPassword()));
         assertEquals(found.getUsername(), user.getUsername());
     }
+
+    @Test
+    public void wheneExistByUserName_thenReturnTrue() {
+
+        // when
+        boolean result = userRepository.existsByUserName(user.getUsername());
+
+        // then
+        assertTrue(result);
+    }
 }
